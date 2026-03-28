@@ -1,6 +1,6 @@
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAppStore } from '../../store/useAppStore';
-import { LogOut, LayoutGrid, DollarSign } from 'lucide-react';
+import { LogOut, LayoutGrid } from 'lucide-react';
 
 export function Layout() {
     const navigate = useNavigate();
@@ -19,13 +19,41 @@ export function Layout() {
             <nav className="w-full bg-[#070707]/80 backdrop-blur-md border-b border-white/10 p-4 sticky top-0 z-50 flex-none">
                 <div className="max-w-5xl mx-auto flex justify-between items-center">
                     <div className="flex items-center gap-3">
-                        <div className="p-1.5 rounded-full bg-[#22e56f]/10 border border-[#22e56f]/20">
-                            <DollarSign className="w-6 h-6 text-[#22e56f]" />
+
+                        {/* Ícone idêntico ao da tela de Login, ajustado para a Navbar */}
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.05]">
+                            <svg
+                                className="h-6 w-6 text-[#22e56f]"
+                                viewBox="0 0 100 100"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M10 50C10 30 30 10 50 10V90C30 90 10 70 10 50Z"
+                                    stroke="currentColor"
+                                    strokeWidth="6"
+                                    strokeLinecap="round"
+                                />
+                                <path
+                                    d="M50 10C70 10 90 30 90 50C90 70 70 90 50 90V10Z"
+                                    stroke="currentColor"
+                                    strokeWidth="6"
+                                    strokeLinecap="round"
+                                />
+                                <path
+                                    d="M50 35V65"
+                                    stroke="currentColor"
+                                    strokeWidth="6"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
                         </div>
+
                         <h1 className="text-xl font-bold tracking-tight text-white">
                             Onda<span className='font-light text-white/75'>Finance</span>
                         </h1>
                     </div>
+
                     <div className="flex items-center gap-2 md:gap-4">
                         <Link
                             to="/"
