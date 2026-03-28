@@ -42,30 +42,30 @@ export function Dashboard() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col h-full space-y-6 md:space-y-8 antialiased"
+            className="flex flex-col h-full space-y-6 md:space-y-8 antialiased relative z-10"
         >
             <div className="flex-none">
-                <h2 className="text-3xl font-bold tracking-tight text-foreground">Painel de Controle</h2>
-                <p className="text-base text-muted-foreground mt-1">
-                    Bem-vindo de volta, <span className='font-semibold text-foreground'>{displayName}</span>. Acompanhe as suas finanças em tempo real.
+                <h2 className="text-3xl font-bold tracking-tight text-white">Painel de Controle</h2>
+                <p className="text-base text-white/50 mt-1">
+                    Bem-vindo de volta, <span className='font-semibold text-white'>{displayName}</span>. Acompanhe as suas finanças em tempo real.
                 </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 flex-none">
 
-                {/* Card de Saldo */}
-                <Card className="border-border shadow-sm hover:shadow-md transition-shadow duration-300 h-full bg-card flex flex-col items-center justify-center p-6 md:p-8">
+                {/* Card de Saldo adaptado pro Dark Mode */}
+                <Card className="border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.5)] bg-[#0d0d0d]/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 md:p-8 rounded-[24px]">
                     <div className="flex flex-col items-center space-y-3">
-                        <div className="flex items-center gap-2 text-muted-foreground mb-1">
-                            <DollarSign className="w-5 h-5 text-primary" />
-                            <h3 className="text-sm font-semibold uppercase tracking-wider">Saldo Disponível</h3>
+                        <div className="flex items-center gap-2 text-white/60 mb-1 px-4 py-1.5 rounded-full border border-white/5 bg-white/[0.02]">
+                            <DollarSign className="w-4 h-4 text-[#22e56f]" />
+                            <h3 className="text-xs font-semibold uppercase tracking-wider">Saldo Disponível</h3>
                         </div>
 
-                        <div className="text-5xl md:text-6xl font-extrabold tracking-tighter text-foreground leading-none">
+                        <div className="text-5xl md:text-6xl font-extrabold tracking-tighter text-white leading-none">
                             <AnimatedCounter value={balance} />
                         </div>
 
-                        <p className="text-sm font-medium text-muted-foreground mt-3">
+                        <p className="text-sm font-medium text-[#22e56f]/80 mt-3">
                             Conta Corrente Principal
                         </p>
                     </div>
@@ -77,33 +77,33 @@ export function Dashboard() {
                 </div>
             </div>
 
-            {/* Card de Transações */}
-            <Card className="border-border shadow-sm overflow-hidden bg-card flex flex-col">
-                <CardHeader className="flex-none border-b border-border/50 bg-card pb-4">
+            {/* Card de Transações adaptado */}
+            <Card className="border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.5)] overflow-hidden bg-[#0d0d0d]/95 backdrop-blur-xl flex flex-col rounded-[24px]">
+                <CardHeader className="flex-none border-b border-white/5 bg-transparent pb-4">
                     <div className="space-y-1">
-                        <CardTitle className="text-xl font-semibold text-foreground flex items-center gap-2">
-                            <Activity className="w-5 h-5 text-primary" />
+                        <CardTitle className="text-xl font-semibold text-white flex items-center gap-2">
+                            <Activity className="w-5 h-5 text-[#22e56f]" />
                             Últimas Transações
                         </CardTitle>
                     </div>
                 </CardHeader>
 
-                {/* SCROLL BONITO E LEVE */}
+                {/* SCROLL BONITO E LEVE - Adaptado para o fundo escuro */}
                 <CardContent className="p-2 md:p-4 max-h-[380px] overflow-y-auto 
           [&::-webkit-scrollbar]:w-1.5 
           [&::-webkit-scrollbar-track]:bg-transparent 
-          [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 
-          hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40 
+          [&::-webkit-scrollbar-thumb]:bg-white/10 
+          hover:[&::-webkit-scrollbar-thumb]:bg-white/20 
           [&::-webkit-scrollbar-thumb]:rounded-full transition-colors">
 
                     {transactions.length === 0 ? (
                         <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
-                            <div className="bg-muted p-4 rounded-full">
-                                <ListChecks className="w-8 h-8 text-muted-foreground" />
+                            <div className="bg-white/5 border border-white/10 p-4 rounded-full">
+                                <ListChecks className="w-8 h-8 text-white/40" />
                             </div>
                             <div className='space-y-1'>
-                                <p className='text-lg font-semibold text-foreground'>Nenhuma transação cadastrada</p>
-                                <p className="text-sm text-muted-foreground">Faça a sua primeira transferência para movimentar o seu histórico.</p>
+                                <p className='text-lg font-semibold text-white'>Nenhuma transação cadastrada</p>
+                                <p className="text-sm text-white/40">Faça a sua primeira transferência para movimentar o seu histórico.</p>
                             </div>
                         </div>
                     ) : (
@@ -117,11 +117,13 @@ export function Dashboard() {
                                 <motion.div
                                     key={tx.id}
                                     variants={itemVariants}
-                                    whileHover={{ scale: 1.005, backgroundColor: "var(--color-accent)", opacity: 0.9 }}
-                                    className="flex items-center justify-between p-4 rounded-xl border border-border/40 hover:border-border transition-all duration-200 ease-out"
+                                    whileHover={{ scale: 1.005, backgroundColor: "rgba(255, 255, 255, 0.03)" }}
+                                    className="flex items-center justify-between p-4 rounded-[16px] border border-white/5 hover:border-white/10 transition-all duration-200 ease-out bg-white/[0.01]"
                                 >
                                     <div className="flex items-center space-x-4">
-                                        <div className={`p-3 rounded-full shadow-sm ${tx.type === 'transfer_in' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'
+                                        <div className={`p-3 rounded-full border ${tx.type === 'transfer_in'
+                                            ? 'bg-[#22e56f]/10 text-[#22e56f] border-[#22e56f]/20'
+                                            : 'bg-red-500/10 text-red-400 border-red-500/20'
                                             }`}>
                                             {tx.type === 'transfer_in' ? (
                                                 <ArrowDownRight className="w-5 h-5" />
@@ -130,15 +132,15 @@ export function Dashboard() {
                                             )}
                                         </div>
                                         <div className="space-y-1">
-                                            <p className="text-base font-semibold text-foreground leading-none">
+                                            <p className="text-base font-semibold text-white leading-none">
                                                 {tx.description}
                                             </p>
-                                            <p className="text-sm font-medium text-muted-foreground tabular-nums">
+                                            <p className="text-sm font-medium text-white/40 tabular-nums">
                                                 {formatDate(tx.date)}
                                             </p>
                                         </div>
                                     </div>
-                                    <div className={`text-lg font-bold tracking-tight ${tx.type === 'transfer_in' ? 'text-emerald-600' : 'text-foreground'
+                                    <div className={`text-lg font-bold tracking-tight ${tx.type === 'transfer_in' ? 'text-[#22e56f]' : 'text-white'
                                         } tabular-nums`}>
                                         {tx.type === 'transfer_in' ? '+' : '-'} {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(tx.amount)}
                                     </div>
