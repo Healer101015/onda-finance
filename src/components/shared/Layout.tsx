@@ -1,6 +1,15 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { useAppStore } from '../../store/useAppStore';
 
 export function Layout() {
+    const navigate = useNavigate();
+    const { user, logout } = useAppStore();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
+
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col cursor-default">
             <nav className="w-full bg-white border-b border-slate-200 p-4 sticky top-0 z-50">
@@ -9,14 +18,19 @@ export function Layout() {
                         Onda Finance
                     </h1>
                     <div className="space-x-6 flex items-center">
+                        <span className="text-sm text-slate-500 hidden sm:inline-block">
+                            Olá, {user?.name || 'Utilizador'}
+                        </span>
                         <Link
                             to="/"
                             className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-200 ease-in-out cursor-pointer"
                         >
                             Dashboard
                         </Link>
-                        {/* O botão de logout será funcional quando integrarmos o Zustand */}
-                        <button className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors duration-200 ease-in-out cursor-pointer">
+                        <button
+                            onClick={handleLogout}
+                            className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors duration-200 ease-in-out cursor-pointer"
+                        >
                             Sair
                         </button>
                     </div>
