@@ -12,8 +12,8 @@ export function Layout() {
     };
 
     return (
-        // No telemóvel a página rola livremente (min-h-screen). 
-        // No PC (md:) a tela tranca (h-screen overflow-hidden) para efeito App.
+        // pagina refinada para celular. 
+        // No computadof (md:) a tela tranca com efeito no app.
         <div className="md:h-screen md:overflow-hidden min-h-screen bg-muted/30 flex flex-col antialiased">
             <nav className="w-full bg-background/80 backdrop-blur-md border-b border-border p-4 sticky top-0 z-50 flex-none">
                 <div className="max-w-5xl mx-auto flex justify-between items-center">

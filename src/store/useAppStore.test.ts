@@ -27,10 +27,10 @@ describe('Fluxo de Transferência - Onda Finance', () => {
         // 3. Valida se o estado final está perfeitamente calculado
         const newState = useAppStore.getState();
 
-        // O saldo deve ter diminuído corretamente (5000 - 450.50 = 4549.50)
+        // O saldo deve ter diminuído corretamente
         expect(newState.balance).toBe(4549.50);
 
-        // O histórico deve conter 1 transação com os dados corretos
+        // O histórico deve conter 1 transação com os dados certos
         expect(newState.transactions.length).toBe(1);
         expect(newState.transactions[0].amount).toBe(450.50);
         expect(newState.transactions[0].type).toBe('transfer_out');

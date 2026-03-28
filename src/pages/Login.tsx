@@ -34,7 +34,7 @@ export function Login() {
 
     return (
         <div className="min-h-screen bg-muted/30 flex antialiased">
-            {/* Coluna Esquerda: Split Screen Premium */}
+            {/* Coluna Esquerda Split Screen Premium */}
             <div className="flex-1 bg-primary p-12 hidden md:flex flex-col justify-between">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -64,7 +64,7 @@ export function Login() {
                 <p className="text-primary-foreground/50 text-xs">© 2026 Onda Finance Labs. Todos os direitos reservados.</p>
             </div>
 
-            {/* Coluna Direita: Formulário de Login (Design Premium) */}
+            {/* Coluna Direita: Formulário de Login*/}
             <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-12">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

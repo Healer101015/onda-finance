@@ -53,7 +53,7 @@ export function Dashboard() {
 
             <div className="grid gap-6 md:grid-cols-2 flex-none">
 
-                {/* 👉 Card de Saldo: 100% Centralizado e em Bloco Coeso 👈 */}
+                {/* Card de Saldo */}
                 <Card className="border-border shadow-sm hover:shadow-md transition-shadow duration-300 h-full bg-card flex flex-col items-center justify-center p-6 md:p-8">
                     <div className="flex flex-col items-center space-y-3">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
@@ -88,8 +88,7 @@ export function Dashboard() {
                     </div>
                 </CardHeader>
 
-                {/* 👉 O SCROLL BONITO E DE LEVE 👈 
-            Adicionado max-h-[380px] para garantir que não empurra a página e um scrollbar ultra-fino (w-1.5) e arredondado. */}
+                {/* SCROLL BONITO E LEVE */}
                 <CardContent className="p-2 md:p-4 max-h-[380px] overflow-y-auto 
           [&::-webkit-scrollbar]:w-1.5 
           [&::-webkit-scrollbar-track]:bg-transparent 
@@ -109,7 +108,7 @@ export function Dashboard() {
                         </div>
                     ) : (
                         <motion.div
-                            className="space-y-2 pr-2" // pr-2 dá um pequeno espaço para a barra de scroll não colar no conteúdo
+                            className="space-y-2 pr-2"
                             initial="hidden"
                             animate="visible"
                             variants={containerVariants}

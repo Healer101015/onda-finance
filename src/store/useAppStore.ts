@@ -32,10 +32,10 @@ export const useAppStore = create<AppState>()(
             balance: 0,
             transactions: [],
 
-            // Simula o login e injeta um saldo inicial fictício para testes
+            // Simula o login
             login: (user) => set({ user, balance: 5000 }),
 
-            // Limpa tudo ao sair
+            // Limp ao sair
             logout: () => set({ user: null, balance: 0, transactions: [] }),
 
             // Adiciona transação e atualiza o saldo dinamicamente
