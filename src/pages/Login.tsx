@@ -121,7 +121,7 @@ export function Login() {
                     </form>
 
                     <div className="mt-8 pt-6 border-t border-border text-center text-xs text-muted-foreground">
-                        Esta é uma aplicação de teste. As credenciais não são validadas num servidor real.
+                        João brito - Desenvolvedor Frontend | Projeto de Demonstração para Onda Finance
                     </div>
                 </motion.div>
             </div>
