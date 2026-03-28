@@ -1,9 +1,10 @@
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAppStore } from '../../store/useAppStore';
+import { LogOut, LayoutGrid, DollarSign } from 'lucide-react';
 
 export function Layout() {
     const navigate = useNavigate();
-    const { user, logout } = useAppStore();
+    const { logout } = useAppStore();
 
     const handleLogout = () => {
         logout();
@@ -11,26 +12,29 @@ export function Layout() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 flex flex-col cursor-default">
-            <nav className="w-full bg-white border-b border-slate-200 p-4 sticky top-0 z-50">
+        // bg-muted cria o contraste perfeito com os cartões bg-card
+        <div className="min-h-screen bg-muted/30 flex flex-col antialiased">
+            <nav className="w-full bg-background/80 backdrop-blur-md border-b border-border p-4 sticky top-0 z-50">
                 <div className="max-w-5xl mx-auto flex justify-between items-center">
-                    <h1 className="text-xl font-bold text-slate-900 tracking-tight cursor-text">
-                        Onda Finance
-                    </h1>
-                    <div className="space-x-6 flex items-center">
-                        <span className="text-sm text-slate-500 hidden sm:inline-block">
-                            Olá, {user?.name || 'Utilizador'}
-                        </span>
+                    <div className="flex items-center gap-2">
+                        <DollarSign className="w-7 h-7 bg-primary text-primary-foreground p-1.5 rounded-full" />
+                        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+                            Onda<span className='font-light'>Finance</span>
+                        </h1>
+                    </div>
+                    <div className="flex items-center gap-1.5">
                         <Link
                             to="/"
-                            className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-200 ease-in-out cursor-pointer"
+                            className="text-sm font-medium h-9 px-4 py-2 rounded-md bg-accent text-accent-foreground flex items-center gap-2"
                         >
+                            <LayoutGrid className="w-4 h-4" />
                             Dashboard
                         </Link>
                         <button
                             onClick={handleLogout}
-                            className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors duration-200 ease-in-out cursor-pointer"
+                            className="text-sm h-9 px-4 py-2 rounded-md text-red-500 hover:text-red-600 hover:bg-red-50 transition-all flex items-center gap-2"
                         >
+                            <LogOut className="w-4 h-4" />
                             Sair
                         </button>
                     </div>
