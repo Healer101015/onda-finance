@@ -57,7 +57,7 @@ export function Login() {
                         Controle as suas finanças<br /> num <span className='font-light'>piscar de olhos.</span>
                     </h2>
                     <p className="text-primary-foreground/70 mt-4 text-lg max-w-lg font-light">
-                        Um internet banking simples, moderno e totalmente focado no que importa: a sua saúde financeira.
+                        Um internet banking simples, moderno e totalmente focado.
                     </p>
                 </motion.div>
 
