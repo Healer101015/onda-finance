@@ -58,21 +58,21 @@ export function Login() {
         <div className="relative min-h-screen flex bg-[#050505] text-white antialiased selection:bg-[#22e56f]/20 selection:text-white overflow-hidden">
 
             {/* ============================================================== */}
-            {/* 1. PALCO GLOBAL DE FUNDO           */}
+            {/* 1. PALCO GLOBAL DE FUNDO (AQUI ACONTECE O SHOW)                */}
             {/* ============================================================== */}
             <div className="absolute inset-0 z-0 flex pointer-events-none">
 
-                {/* Texturas e Gradientes Base (Esquerda) */}
-                <div className="hidden md:block flex-1 border-r border-white/5 bg-[radial-gradient(circle_at_top_left,rgba(34,229,111,0.06),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(34,229,111,0.03),transparent_24%),linear-gradient(135deg,#050505_0%,#080808_40%,#0b0f0c_100%)] relative">
+                {/* Texturas e Gradientes Base (Esquerda) - AGORA COM flex-[1.2] PARA FICAR MAIOR */}
+                <div className="hidden md:block flex-[1.2] border-r border-white/5 bg-[radial-gradient(circle_at_top_left,rgba(34,229,111,0.06),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(34,229,111,0.03),transparent_24%),linear-gradient(135deg,#050505_0%,#080808_40%,#0b0f0c_100%)] relative">
                     <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:52px_52px]" />
                 </div>
 
-                {/* Texturas e Gradientes Base (Direita) */}
-                <div className="flex-1 bg-gradient-to-b from-[#070707] via-[#090909] to-[#050505] relative">
+                {/* Texturas e Gradientes Base (Direita) - Continua com flex-1 */}
+                <div className="flex flex-1 bg-gradient-to-b from-[#070707] via-[#090909] to-[#050505] relative">
                     <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:44px_44px]" />
                 </div>
 
-                {/* ORQUESTRA DE LUZES  */}
+                {/* ORQUESTRA DE LUZES (Viajam livremente pela tela inteira) */}
                 <div className="absolute inset-0 overflow-visible">
 
                     {/* Bola 1: Nasce na esquerda e cruza a linha para a direita */}
@@ -111,9 +111,9 @@ export function Login() {
             </div>
 
             {/* ============================================================== */}
-            {/* 2. CONTEÚDO DA ESQUERDA     */}
+            {/* 2. CONTEÚDO DA ESQUERDA (Z-10 para ficar em cima das luzes)    */}
             {/* ============================================================== */}
-            <div className="relative z-10 hidden md:flex flex-1 flex-col justify-center items-center px-16">
+            <div className="relative z-10 hidden md:flex flex-[1.2] flex-col justify-center items-center px-16">
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -174,7 +174,7 @@ export function Login() {
             </div>
 
             {/* ============================================================== */}
-            {/* 3. CONTEÚDO DA DIREITA      */}
+            {/* 3. CONTEÚDO DA DIREITA (Z-10 para ficar em cima das luzes)     */}
             {/* ============================================================== */}
             <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-10 md:px-12">
 
