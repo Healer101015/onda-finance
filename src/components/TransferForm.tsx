@@ -11,11 +11,11 @@ import { Send } from 'lucide-react';
 export function TransferForm() {
     const { balance, addTransaction } = useAppStore();
 
-    // O schema do Zod precisa ser recriado no render para pegar o saldo atualizado
+    // Zod configurado de forma simples e robusta, compatível com as versões mais recentes
+    // Agora sim, limpo e apenas com as propriedades que a sua versão do Zod aceita
     const transferSchema = z.object({
         description: z.string().min(3, 'A descrição deve ter pelo menos 3 caracteres.'),
-        amount: z.coerce // coerce converte a string do input para number automaticamente
-            .number({ invalid_type_error: 'Digite um valor válido.' })
+        amount: z.number({ message: 'Digite um valor válido.' })
             .positive('O valor deve ser maior que zero.')
             .max(balance, 'Saldo insuficiente para esta transferência.'),
     });
@@ -32,17 +32,16 @@ export function TransferForm() {
     });
 
     const onSubmit = async (data: TransferFormInputs) => {
-        // Simula a latência da rede para manter a UX realista
+        // Delay simulado de rede para manter a UX realista
         await new Promise((resolve) => setTimeout(resolve, 800));
 
-        // Dispara a action do Zustand
         addTransaction({
             type: 'transfer_out',
             amount: data.amount,
             description: data.description,
         });
 
-        // Limpa os campos após o sucesso
+        // Limpa o formulário após a transferência ser concluída
         reset();
     };
 
@@ -58,6 +57,8 @@ export function TransferForm() {
             <CardContent className="flex-1">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col h-full justify-between">
                     <div className="space-y-4">
+
+                        {/* Campo: Descrição */}
                         <div className="space-y-2">
                             <Label htmlFor="description" className={errors.description ? "text-red-500" : ""}>
                                 Descrição (Ex: Pix Padaria)
@@ -73,16 +74,18 @@ export function TransferForm() {
                             )}
                         </div>
 
+                        {/* Campo: Valor */}
                         <div className="space-y-2">
                             <Label htmlFor="amount" className={errors.amount ? "text-red-500" : ""}>
                                 Valor (R$)
                             </Label>
+                            {/* O valueAsNumber converte automaticamente o input para número */}
                             <Input
                                 id="amount"
                                 type="number"
                                 step="0.01"
                                 placeholder="0.00"
-                                {...register('amount')}
+                                {...register('amount', { valueAsNumber: true })}
                                 className={errors.amount ? "border-red-500 focus-visible:ring-red-500" : ""}
                             />
                             {errors.amount && (
